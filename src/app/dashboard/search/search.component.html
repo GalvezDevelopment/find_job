@@ -1,0 +1,59 @@
+<div class="search-container">
+  <header>
+    <h1>Browse through our directory and find your dream job!</h1>
+    <h4>Lorem ipsum dolor sit amet, cum aperiam appellantur te, mea petentium expetes.</h4>
+  </header>
+  <section class="search-container_form">
+    <mat-grid-list [cols]="screen.cols" [gutterSize]="screen.gutter" rowHeight="100px">
+      <mat-grid-tile>
+        <mat-form-field appearance="fill" floatLabel="auto">
+          <label for="keyword">Kerwords</label>
+          <input id="keyword" matInput>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field appearance="fill" floatLabel="auto">
+          <label for="location">Location</label>
+          <mat-select id="location">
+            <mat-option>Location</mat-option>
+            <mat-option>Brooklyn</mat-option>
+            <mat-option>Harlem</mat-option>
+            <mat-option>Manhattan</mat-option>
+            <mat-option>New York</mat-option>
+            <mat-option>Queens</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field appearance="fill" floatLabel="auto">
+          <label for="categories">All Categories</label>
+          <mat-select id="categories">
+            <mat-option>All Categories</mat-option>
+            <mat-option>Assurance</mat-option>
+            <mat-option>Banking</mat-option>
+            <mat-option>Copyright</mat-option>
+            <mat-option>Design</mat-option>
+            <mat-option>IT Sector</mat-option>
+            <mat-option>Management</mat-option>
+            <mat-option>Photography</mat-option>
+            <mat-option>Public Sector</mat-option>
+            <mat-option>Software</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <button class="btn-search" color="primary" mat-raised-button>SEARCH</button>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="screen.cols">
+        <div class="types"  >
+          <mat-checkbox value="Contract">Contract</mat-checkbox>
+          <mat-checkbox value="Freelance">Freelance</mat-checkbox>
+          <mat-checkbox value="Full">Full Time</mat-checkbox>
+          <mat-checkbox value="Internship">Internship</mat-checkbox>
+          <mat-checkbox value="PartTime">Part Time</mat-checkbox>
+          <mat-checkbox value="Temporary">Temporary</mat-checkbox>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </section>
+</div>
