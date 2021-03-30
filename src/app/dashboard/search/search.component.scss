@@ -1,0 +1,24 @@
+:host {
+  header, .search-container_form {
+    padding: 20px;
+  }
+
+  mat-form-field.mat-form-field {
+    width: 100%;
+  }
+
+  mat-checkbox.mat-checkbox {
+    margin-right: 15px;
+  }
+
+  .types {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .btn-search {
+    width: 50%;
+    height: 50%;
+  }
+}
