@@ -3,57 +3,61 @@
     <h1>Browse through our directory and find your dream job!</h1>
     <h4>Lorem ipsum dolor sit amet, cum aperiam appellantur te, mea petentium expetes.</h4>
   </header>
-  <section class="search-container_form">
-    <mat-grid-list [cols]="screen.cols" [gutterSize]="screen.gutter" rowHeight="100px">
+  <section class="search-container__form">
+    <mat-grid-list [cols]="screen.searchForm.cols" [gutterSize]="screen.searchForm.gutter" rowHeight="100px">
       <mat-grid-tile>
         <mat-form-field appearance="fill" floatLabel="auto">
           <label for="keyword">Kerwords</label>
-          <input id="keyword" matInput>
+          <input [formControl]="description" id="keyword" matInput>
         </mat-form-field>
       </mat-grid-tile>
       <mat-grid-tile>
         <mat-form-field appearance="fill" floatLabel="auto">
           <label for="location">Location</label>
-          <mat-select id="location">
-            <mat-option>Location</mat-option>
-            <mat-option>Brooklyn</mat-option>
-            <mat-option>Harlem</mat-option>
-            <mat-option>Manhattan</mat-option>
-            <mat-option>New York</mat-option>
-            <mat-option>Queens</mat-option>
-          </mat-select>
+          <input [formControl]="location" id="location" matInput/>
         </mat-form-field>
       </mat-grid-tile>
       <mat-grid-tile>
-        <mat-form-field appearance="fill" floatLabel="auto">
-          <label for="categories">All Categories</label>
-          <mat-select id="categories">
-            <mat-option>All Categories</mat-option>
-            <mat-option>Assurance</mat-option>
-            <mat-option>Banking</mat-option>
-            <mat-option>Copyright</mat-option>
-            <mat-option>Design</mat-option>
-            <mat-option>IT Sector</mat-option>
-            <mat-option>Management</mat-option>
-            <mat-option>Photography</mat-option>
-            <mat-option>Public Sector</mat-option>
-            <mat-option>Software</mat-option>
-          </mat-select>
-        </mat-form-field>
+        <button (click)="search()" class="btn-search" color="primary" mat-raised-button>SEARCH</button>
       </mat-grid-tile>
-      <mat-grid-tile>
-        <button class="btn-search" color="primary" mat-raised-button>SEARCH</button>
-      </mat-grid-tile>
-      <mat-grid-tile [colspan]="screen.cols">
-        <div class="types"  >
-          <mat-checkbox value="Contract">Contract</mat-checkbox>
-          <mat-checkbox value="Freelance">Freelance</mat-checkbox>
-          <mat-checkbox value="Full">Full Time</mat-checkbox>
-          <mat-checkbox value="Internship">Internship</mat-checkbox>
-          <mat-checkbox value="PartTime">Part Time</mat-checkbox>
-          <mat-checkbox value="Temporary">Temporary</mat-checkbox>
+      <mat-grid-tile [colspan]="screen.searchForm.cols">
+        <div class="types">
+          <mat-checkbox (change)="setType($event)" value="contract">Contract</mat-checkbox>
+          <mat-checkbox (change)="setType($event)" value="freelance">Freelance</mat-checkbox>
+          <mat-checkbox (change)="setType($event)" value="full_time">Full Time</mat-checkbox>
+          <mat-checkbox (change)="setType($event)" value="internship">Internship</mat-checkbox>
+          <mat-checkbox (change)="setType($event)" value="part_time">Part Time</mat-checkbox>
+          <mat-checkbox (change)="setType($event)" value="temporary">Temporary</mat-checkbox>
         </div>
       </mat-grid-tile>
     </mat-grid-list>
+  </section>
+  <section class="search-container__results">
+    <article *ngFor="let job of jobs" class="search-container__job">
+      <mat-grid-list [cols]="screen.resultSection.cols" [gutterSize]="screen.resultSection.gutter">
+        <mat-grid-tile>
+          <img [src]="job.company_logo" width="88">
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="screen.resultSection.colspan">
+          <div class="job__details">
+            <h2 [ngStyle]="{ marginBottom: screen.resultSection.cols === '4' ? '0' : 'auto' }">{{ job.title }}</h2>
+            <section>
+              <h2 [ngStyle]="{
+              width: screen.resultSection.cols === '4' ? '100%' : 'auto',
+              marginBottom: screen.resultSection.cols === '4' ? '0' : 'auto'
+               }">{{ job.company }}</h2>
+              <h3>
+                <mat-icon>room</mat-icon>
+                {{ job.location }}
+              </h3>
+              <h3>
+                <mat-icon>schedule</mat-icon>
+                {{ job.type }}
+              </h3>
+            </section>
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </article>
   </section>
 </div>

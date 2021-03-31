@@ -1,13 +1,13 @@
 :host {
-  header, .search-container_form {
+  header, .search-container__form {
     padding: 20px;
   }
 
-  mat-form-field.mat-form-field {
+  .mat-form-field {
     width: 100%;
   }
 
-  mat-checkbox.mat-checkbox {
+  .mat-checkbox {
     margin-right: 15px;
   }
 
@@ -20,5 +20,35 @@
   .btn-search {
     width: 50%;
     height: 50%;
+  }
+
+  .search-container__job {
+
+    .job__details {
+      display: flex;
+      flex-direction: column;
+      align-items: baseline;
+      width: 100%;
+
+      & > section {
+        display: flex;
+        width: 100%;
+        color: #8a959e;
+        flex-wrap: wrap;
+
+        & > h2, & > h3 {
+          display: flex;
+          margin-right: 15px;
+
+          .mat-icon {
+            margin-right: 5px;
+          }
+        }
+
+        & > h2 {
+          font-weight: bold;
+        }
+      }
+    }
   }
 }

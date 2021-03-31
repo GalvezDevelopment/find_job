@@ -12,6 +12,8 @@ import { MatOptionModule } from "@angular/material/core";
 import { MatGridListModule } from "@angular/material/grid-list";
 import { MatRadioModule } from "@angular/material/radio";
 import { MatCheckboxModule } from "@angular/material/checkbox";
+import { HttpClientModule } from "@angular/common/http";
+import { ReactiveFormsModule } from "@angular/forms";
 
 const material = [
   MatToolbarModule,
@@ -32,9 +34,11 @@ const material = [
   declarations: [],
   imports: [
     CommonModule,
+    HttpClientModule,
+    ReactiveFormsModule,
     ...material
   ],
-  exports: [...material]
+  exports: [...material, HttpClientModule, ReactiveFormsModule]
 })
 export class SharedModule {
 }
