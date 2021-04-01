@@ -8,13 +8,13 @@ export class JobsService {
   constructor(private readonly _http: HttpClient) {
   }
 
-  get(description: string, location?: string, type?: string): Observable<any> {
+  get(description: string, location?: string, fullTime?: string): Observable<any> {
     let filter = 'description=' + description;
     if (location) {
       filter += '&location=' + location;
     }
-    if (type) {
-      filter += `&${ type }=true`;
+    if (fullTime) {
+      filter += `&full_time=${ fullTime }`;
     }
     return this._http.get(`http://localhost:4200/api/positions.json?${ filter }`);
   }

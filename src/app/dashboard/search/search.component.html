@@ -22,35 +22,37 @@
       </mat-grid-tile>
       <mat-grid-tile [colspan]="screen.searchForm.cols">
         <div class="types">
-          <mat-checkbox (change)="setType($event)" value="contract">Contract</mat-checkbox>
-          <mat-checkbox (change)="setType($event)" value="freelance">Freelance</mat-checkbox>
-          <mat-checkbox (change)="setType($event)" value="full_time">Full Time</mat-checkbox>
-          <mat-checkbox (change)="setType($event)" value="internship">Internship</mat-checkbox>
-          <mat-checkbox (change)="setType($event)" value="part_time">Part Time</mat-checkbox>
-          <mat-checkbox (change)="setType($event)" value="temporary">Temporary</mat-checkbox>
+          <mat-radio-group [formControl]="type">
+            <mat-radio-button value="true">Full Time</mat-radio-button>
+            <mat-radio-button value="false">Part Time</mat-radio-button>
+          </mat-radio-group>
         </div>
       </mat-grid-tile>
     </mat-grid-list>
   </section>
   <section class="search-container__results">
     <article *ngFor="let job of jobs" class="search-container__job">
-      <mat-grid-list [cols]="screen.resultSection.cols" [gutterSize]="screen.resultSection.gutter">
+      <mat-grid-list [cols]="screen.resultSection.cols" [gutterSize]="screen.resultSection.gutter"
+                     [rowHeight]="screen.resultSection.rowHeight">
         <mat-grid-tile>
           <img [src]="job.company_logo" width="88">
         </mat-grid-tile>
         <mat-grid-tile [colspan]="screen.resultSection.colspan">
           <div class="job__details">
-            <h2 [ngStyle]="{ marginBottom: screen.resultSection.cols === '4' ? '0' : 'auto' }">{{ job.title }}</h2>
+            <h2 [ngClass]="{ truncate: screen.resultSection.cols === '4' }"
+                [ngStyle]="{ marginBottom: screen.resultSection.cols === '4' ? '0' : 'auto' }">{{ job.title }}</h2>
             <section>
-              <h2 [ngStyle]="{
-              width: screen.resultSection.cols === '4' ? '100%' : 'auto',
-              marginBottom: screen.resultSection.cols === '4' ? '0' : 'auto'
-               }">{{ job.company }}</h2>
-              <h3>
+              <section>
+                <h2 [ngClass]="{ truncate: screen.resultSection.cols === '4' }"
+                    [ngStyle]="{ marginBottom: screen.resultSection.cols === '4' ? '0' : 'auto' }">{{ job.company }}</h2>
+              </section>
+              <h3 [ngStyle]="{ marginBottom: screen.resultSection.cols === '4' ? '0' : 'auto' }">
                 <mat-icon>room</mat-icon>
                 {{ job.location }}
               </h3>
-              <h3>
+              <h3 [ngStyle]="{
+              marginBottom: screen.resultSection.cols === '4' ? '0' : 'auto'
+               }">
                 <mat-icon>schedule</mat-icon>
                 {{ job.type }}
               </h3>

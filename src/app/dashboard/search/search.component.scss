@@ -7,8 +7,8 @@
     width: 100%;
   }
 
-  .mat-checkbox {
-    margin-right: 15px;
+  .mat-radio-button {
+    margin-right: 20px;
   }
 
   .types {
@@ -35,6 +35,10 @@
         width: 100%;
         color: #8a959e;
         flex-wrap: wrap;
+
+        & > section {
+          width: 100%;
+        }
 
         & > h2, & > h3 {
           display: flex;
