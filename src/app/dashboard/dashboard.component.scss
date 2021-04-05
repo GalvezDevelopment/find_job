@@ -1,0 +1,9 @@
+:host {
+  .dashboard__container {
+    display: block;
+
+    &.p-x {
+      padding: 0 70px;
+    }
+  }
+}

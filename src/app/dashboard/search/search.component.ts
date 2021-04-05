@@ -58,7 +58,7 @@ export class SearchComponent implements OnInit {
     const isXLDesktop = _layout.observe('(min-width: 1024px)').pipe(
       filter(state => state.breakpoints['(min-width: 1024px)']),
       map(state => ({
-        searchForm: { cols: '3', gutter: '10px' },
+        searchForm: { cols: '4', gutter: '15px' },
         resultSection: {
           cols: '6',
           gutter: '0',
